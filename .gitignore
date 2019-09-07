@@ -33,4 +33,7 @@ build/
 ### NextJs ###
 .next/
 node_modules/
+_node_modules/s
+
+
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import '../../styles/main.scss';
+import {Link as NextLink} from '../../routes'
 
 class Header extends React.Component {
   render() {
@@ -24,8 +25,10 @@ class Header extends React.Component {
         </Link>
         <Link href="/cv">
           <a >CV</a>
+         
         </Link>
-
+        <NextLink route='/test/2'> teste 2</NextLink>
+          <NextLink route='/test/5'> teste 5</NextLink>
         </React.Fragment>
     )
   }
