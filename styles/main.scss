@@ -1,6 +1,6 @@
 @import './shared/fonts';
 // PAGES
-@import './index';
+@import './_index';
 
 /*@import './shared/mixins';
 
@@ -22,9 +22,18 @@ html, body {
   font-family: 'Montserrat', 'Helvetica';
 }
 
+.absolute {
+  position: absolute;
+}
+
 .self-typed {
   font-size: 31px;
   font-weight: bold;
   letter-spacing: 2px;
   color:white;
+}
+
+.base-page {
+  padding-top: 150px;
+  color: white;
 }

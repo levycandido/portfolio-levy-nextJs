@@ -37,8 +37,10 @@ class Blogs extends React.Component {
 
     return (
       <BaseLayout>
+      <BasePage>
         <h1>I am About Page</h1>
         <ul>{this.renderPosts(posts)}</ul>
+        </BasePage>
       </BaseLayout>
     )
   }

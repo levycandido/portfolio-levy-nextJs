@@ -16,7 +16,7 @@ class Index extends SuperComponent {
   render() {
 
     return (
-      <BaseLayout>
+      
         <BaseLayout className="cover">
           <div className="main-section">
             <div className="background-image">
@@ -74,7 +74,7 @@ class Index extends SuperComponent {
             </Container>
           </div>
         </BaseLayout>
-      </BaseLayout>
+     
     )
   }
 }
