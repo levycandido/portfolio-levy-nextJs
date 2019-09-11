@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout'
+import BasePage from '../components/shared/BasePage'
 import axios from 'axios';
 import Link from 'next/link';
 class Blogs extends React.Component {
