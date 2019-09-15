@@ -6,7 +6,7 @@ import BasePage from '../components/shared/BasePage'
 class Portfolio extends React.Component {
   render() {
     return (
-      <BaseLayout>
+      <BaseLayout {...this.props.auth}>
         <BasePage className="about-page">
           <h1>I am About Blog</h1>
         </BasePage>

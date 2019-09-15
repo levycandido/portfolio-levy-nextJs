@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server.js",
+    "dev": "node server/index.js",
     "build": "next build",
-    "server": "NODE_ENV=production node server.js",
+    "server": "NODE_ENV=production node server/index.js",
     "deploy": "aws s3 cp --recursive ./build s3://levyportfolio.com",
     "start": "next start"
   },
@@ -16,8 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "auth0-js": "^9.10.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "next": "^9.0.5",
     "next-routes": "^1.4.2",
     "node-sass": "^4.12.0",

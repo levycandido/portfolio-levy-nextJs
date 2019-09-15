@@ -1,34 +1,3 @@
-// import React from 'react';
-
-// import Link from 'next/link';
-
-// import {Link as NextLink} from '../../routes'
-
-// class Header extends React.Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-
-//         <Link href="/about">
-//           <a >about</a>
-//         </Link>
-//         <Link href="/portfolios">
-//           <a >Portfolios</a>
-//       </Link>
-//         <Link href="/blogs">
-//           <a >Blogs</a>
-//         </Link>
-//         <Link href="/cv">
-//           <a >CV</a>
-
-//         </Link>
-
-//         </React.Fragment>
-//     )
-//   }
-// }
-
-// export default Header;
 
 import React from 'react';
 import Link from 'next/link';
@@ -39,16 +8,30 @@ import {
   NavbarBrand,
   Nav,
   NavItem
-  
+
 } from 'reactstrap';
+
+import auth0 from '../../services/auth0';
 
 const BsNavLink = (props) => {
   const { route, title } = props;
 
   return (
     <Link href={route}>
-      <a className="nav-link port-navbar-link"> {title} </a>
+      <a className="nav-link port-navbar-link clickable"> {title} </a>
     </Link>
+  )
+}
+
+const Login = () => {
+  return (
+    <span onClick = {auth0.login} className="nav-link port-navbar-link clickable">Login</span>
+  )
+}
+
+const Logout = () => {
+  return (
+    <span onClick = {auth0.logout} className="nav-link port-navbar-link clickable">Logout</span>
   )
 }
 
@@ -67,6 +50,9 @@ export default class Example extends React.Component {
     });
   }
   render() {
+
+    const { isAuthenticated } = this.props;
+
     return (
       <div>
         <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
@@ -75,20 +61,30 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="port-navbar-item">
-                 <BsNavLink  route="/" title="Home" />
+                <BsNavLink route="/" title="Home" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                 <BsNavLink  route="/about" title="About" />
+                <BsNavLink route="/about" title="About" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                 <BsNavLink  route="/portfolios" title="Portfolios" />
+                <BsNavLink route="/portfolios" title="Portfolios" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                 <BsNavLink  route="/blog" title="Blog" />
+                <BsNavLink route="/blog" title="Blog" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                 <BsNavLink  route="/cv" title="Cv" />
+                <BsNavLink route="/cv" title="Cv" />
               </NavItem>
+              { !isAuthenticated &&
+              <NavItem className="port-navbar-item">
+                <Login />
+              </NavItem>
+              }
+              { isAuthenticated  &&
+              <NavItem className="port-navbar-item">
+                <Logout />
+              </NavItem>
+              }
 
             </Nav>
           </Collapse>
