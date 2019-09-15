@@ -35,5 +35,7 @@ build/
 node_modules/
 _node_modules/s
 
+services\auth0.js
+
 
 

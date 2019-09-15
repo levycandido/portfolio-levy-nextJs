@@ -7,7 +7,7 @@ class Auth0 {
 
     constructor() {
         this.auth0 = new auth0.WebAuth({
-            domain: 'DOMAIN',
+            domain: 'DOMAIN2'0,3
             clientID: 'CIENTID',
             redirectUri: 'http://localhost:3000/callback',
             responseType: 'token id_token',
