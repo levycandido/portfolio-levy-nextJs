@@ -2,7 +2,7 @@ import React from 'react';
 import BaseLayout from '../../components/layouts/BaseLayout'
 import { withRouter } from 'next/router'
 import axios from 'axios';
-import BasePage from '../components/shared/BasePage'
+import BasePage from '../../components/shared/BasePage'
 
 
 class Portfolios extends React.Component {

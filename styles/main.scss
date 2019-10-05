@@ -1,9 +1,13 @@
 @import './shared/fonts';
+@import './shared/colors';
+@import './shared/portfolios';
 // PAGES
 @import './_index';
 
 // COMPONENTS
 @import './header';
+
+
 
 /*@import './shared/mixins';
 
@@ -29,6 +33,10 @@ html, body {
   position: absolute;
 }
 
+.error {
+  font-weight: 700;
+  color: red;
+}
 .clickable {
   cursor: pointer !important;
 }
@@ -42,5 +50,25 @@ html, body {
 
 .base-page {
   padding-top: 150px;
-  color: white;
+  color: black;
 }
+
+// --------- BASE PAGE -------------
+
+.base-page {
+  padding: 150px 0 100px 0;
+  color: black;
+  background-color: #ecedee;
+  min-height: 100vh;
+
+  .page-header {
+    .page-header-title {
+      font-weight: 700;
+      color: black;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// --------- BASE PAGE -------------

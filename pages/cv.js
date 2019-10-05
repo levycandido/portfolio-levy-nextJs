@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout'
-import BasePage from '../components/shared/BasePage'
+import BasePage from '../components/shared/basePage'
 
 class cv extends React.Component {
   render() {

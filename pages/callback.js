@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout'
-import BasePage from '../components/shared/BasePage'
+import BasePage from '../components/shared/basePage'
 import auth0Client from '../services/auth0';
 import { withRouter } from 'next/router';
 
