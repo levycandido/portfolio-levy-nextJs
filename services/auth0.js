@@ -2,14 +2,17 @@ import auth0 from 'auth0-js';
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import {getCookieFromReq} from '../helpers/utils';
+
+const CLIENT_ID = process.env.CLIENT_ID;
 
 class Auth0 {
 
     constructor() {
         this.auth0 = new auth0.WebAuth({
-            domain: 'DOMAIN2'0,3
-            clientID: 'CIENTID',
-            redirectUri: 'http://localhost:3000/callback',
+            domain: 'dev-fksh0a39.auth0.com',
+            clientID: CLIENT_ID,
+            redirectUri: `${process.env.BASE_URL}/callback`,
             responseType: 'token id_token',
             scope: 'openid profile'
         });
@@ -37,9 +40,7 @@ class Auth0 {
     setSession(authResult) {
         debugger;
         const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-        Cookies.set('user', authResult.idTokenPayload);
         Cookies.set('jwt', authResult.idToken);
-        Cookies.set('expiresAt', expiresAt);
     }
 
     login() {
@@ -47,7 +48,7 @@ class Auth0 {
     }
 
     async getJWKS() {
-        const res = await axios.get('https://XPTOwks.json');
+        const res = await axios.get('https://dev-fksh0a39.auth0.com/.well-known/jwks.json');
         const jwks = res.data;
         return jwks;
     }
@@ -82,12 +83,10 @@ class Auth0 {
 
 
     logout() {
-        Cookies.remove('user');
         Cookies.remove('jwt');
-        Cookies.remove('expiresAt');
         this.auth0.logout({
             returnTo: process.env.BASE_URL,
-            clientID: 'CLIENTID'
+            clientID: CLIENT_ID
         })
 
     }
@@ -105,15 +104,7 @@ class Auth0 {
 
     async serverAuth(req) {
         if (req.headers.cookie) {
-            const tokenCokie = req.headers.cookie
-                .split(";")
-                .find(c => c.trim().startsWith("jwt="));
-
-            if (!tokenCokie) {
-                return undefined;
-            }
-
-            const token = tokenCokie.split("=")[1];
+            const token = getCookieFromReq(req, 'jwt');
             console.log('servidor');
             return await this.verifyToken(token);
 
@@ -121,7 +112,7 @@ class Auth0 {
             return undefined;
         }
     }
-    
+
 
 }
 

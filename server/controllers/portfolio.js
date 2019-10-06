@@ -1,28 +1,31 @@
 const Portfolio = require('../modal/portfolio');
 
 exports.getPortfolios = (req, res) => {
-    Portfolio.find({}, (err, allPortfolios) => {
-        if (err) {
-            return res.status(422).send(err);
-        }
 
-        return res.json(allPortfolios);
-    })
+    Portfolio.find({})
+        .sort({ 'startDate': 1 })
+        .exec((err, allPortfolios) => {
+            if (err) {
+                return res.status(422).send(err);
+            }
+
+            return res.json(allPortfolios);
+        });
 }
 
 exports.getPortfolioById = (req, res) => {
     const portfolioId = req.params.id;
-  
+
     Portfolio.findById(portfolioId)
-             .select('-__v')
-             .exec((err, foundPortfolio) => {
-      if (err) {
-        return res.status(422).send(err);
-      }
-  
-      return res.json(foundPortfolio);
-    });
-  }
+        .select('-__v')
+        .exec((err, foundPortfolio) => {
+            if (err) {
+                return res.status(422).send(err);
+            }
+
+            return res.json(foundPortfolio);
+        });
+}
 
 exports.savePortfolio = (req, res) => {
     const portfolioData = req.body;

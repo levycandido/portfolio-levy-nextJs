@@ -7,6 +7,8 @@ import PortfolioCreateForm from '../components/portfolios/PortfolioCreateForm';
 import { Row, Col } from 'reactstrap';
 import { createPortfolio } from '../actions'
 import { Router } from '../routes'
+import moment from 'moment';
+
 
 const INITIAL_VALUES = {
     title: '',
@@ -14,8 +16,8 @@ const INITIAL_VALUES = {
     location: '',
     position: '',
     description: '', // Text Area
-    startDate: '', // Date
-    endDate: '' // Date
+    startDate:  moment(), // Date
+    endDate:  moment()// Date
 }
 
 
@@ -35,8 +37,7 @@ class p extends React.Component {
         setSubmitting(true)
         createPortfolio(portfolioData)
             .then((portfolio) => {
-                debugger;
-                setSubmitting(false)
+                    setSubmitting(false)
 
                 this.setState({ error: undefined });
                 Router.pushRoute('/portfolios');

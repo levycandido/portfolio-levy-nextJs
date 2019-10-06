@@ -8,7 +8,7 @@ class Portfolio extends React.Component {
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage className="about-page">
-          <h1>I am About Blog</h1>
+          <h1>Developing...</h1>
         </BasePage>
       </BaseLayout>
     )

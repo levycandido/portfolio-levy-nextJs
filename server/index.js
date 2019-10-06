@@ -34,7 +34,6 @@ app.prepare()
 
         server.use(bodyParse.json());
 
-        console.log('antes de chamar')
         server.use('/api/v1/books', bookRoutes);
         server.use('/api/v1/portfolios', portfolioRoutes);
         server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
@@ -58,9 +57,10 @@ app.prepare()
         });
 
 
-        server.listen(3000, (err) => {
+        const PORT = process.env.PORT || 3000;
+        server.listen(PORT, (err) => {
             if (err) throw err
-            console.log('> ready on http://')
+            console.log('> ready on' + PORT)
         })
     })
     .catch((ex) => {

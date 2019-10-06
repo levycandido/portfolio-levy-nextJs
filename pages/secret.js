@@ -21,11 +21,9 @@ class Secret extends React.Component {
   async componentDidMount() {
     
     const secretData = await getSecretData();
-    debugger;
     this.setState({
       secretData
     });
-    console.log(secretData)
 
     
   }
@@ -49,7 +47,6 @@ class Secret extends React.Component {
 
   render() {
     const { superSecretValue } = this.props;
- debugger;
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage>

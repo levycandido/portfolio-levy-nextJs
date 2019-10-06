@@ -16,7 +16,7 @@ export default class PortDate extends React.Component {
 
         this.state = {
             dateValue,
-            isHidden: false
+            isHidden
         };
         this.handleChange = this.handleChange.bind(this);
 

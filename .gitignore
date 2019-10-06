@@ -32,6 +32,7 @@ build/
 
 ### NextJs ###
 .next/
+/server/.next
 node_modules/
 /services/auth0.js
 /server/services/auth.js

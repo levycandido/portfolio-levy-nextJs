@@ -1,9 +1,10 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout'
 import BasePage from '../components/shared/basePage'
-import { Row, Col, Card, CardHeader, CardBody, CardText, CardTitle, Button } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { getPortfolios, deletePortfolio } from '../actions';
 import { Router } from '../routes'
+import PortfolioCards from '../components/portfolios/PortfolioCards'
 class Blogs extends React.Component {
 
   static async getInitialProps() {
@@ -45,26 +46,15 @@ class Blogs extends React.Component {
     return portfolios.map((portfolio, index) => {
       return (
         <Col key={index} md="4">
-          <React.Fragment >
-            <span>
-              <Card className="portfolio-card">
-                <CardHeader className="portfolio-card-header">{portfolio.position}</CardHeader>
-                <CardBody>
-                  <p className="portfolio-card-city"> {portfolio.location} </p>
-                  <CardTitle className="portfolio-card-title">{portfolio.title}</CardTitle>
-                  <CardText className="portfolio-card-text">{portfolio.description}</CardText>
-                  <div className="readMore"> </div>
-                  { isAuthenticated && isSiteOwner && 
+          <PortfolioCards portfolio={portfolio}>
+          { isAuthenticated && isSiteOwner && 
                     <React.Fragment>
                       <Button onClick={(e) => this.navigateToEdit(portfolio._id, e)} color="warning">Edit</Button>{' '}
                       <Button onClick={(e) => this.displayDeleteWarning(portfolio._id, e)} color="danger">Delete</Button>
                     </React.Fragment>
                   }
-                </CardBody>
-
-              </Card>
-            </span>
-          </React.Fragment>
+          </PortfolioCards>
+        
         </Col>
       )
     })
